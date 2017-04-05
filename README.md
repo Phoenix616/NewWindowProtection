@@ -7,12 +7,13 @@ You need [AutoHotkey](https://autohotkey.com/) installed if you don't want to ru
 
 ### NewWindowProtection.ini
 ``` ini
-[Settings]; Log everything to file
-filelog=1
+[Settings]
+; Log everything to file
+filelog=0
 ; Show tray tip when input was blocked
-notifications=1
+notifications=0
 ; Only stop input when keyboard typing was detected x amount of milliseconds before
-inputonly=1000
+inputonly=0
 ; Number of milliseconds in which we should prevent input in newly created windows
 preventinput=1000
 ```
