@@ -7,15 +7,14 @@ You need [AutoHotkey](https://autohotkey.com/) installed if you don't want to ru
 
 ### NewWindowProtection.ini
 ``` ini
-[Settings]
-filelog=0
-; Log everything to file
+[Settings]; Log everything to file
+filelog=1
+; Show tray tip when input was blocked
 notifications=1
-; Show tray tip when steal was blocked
-inputonly=1
-; Only stop stealing when keyboard typing is detected
-preventinput=1000
+; Only stop input when keyboard typing was detected x amount of milliseconds before
+inputonly=1000
 ; Number of milliseconds in which we should prevent input in newly created windows
+preventinput=1000
 ```
 
 ### License:

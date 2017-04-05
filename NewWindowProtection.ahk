@@ -25,10 +25,7 @@ global lastNewWindow := 0
 global logToFile := false ; Log everything to file
 global showTrayTip := true ; Show tray tip when steal was blocked
 
-global inStartMenu := 0 ; The last time the user pressed enter in the start menu
-global inLaunchy := 0 ; The last time the user pressed enter in launchy
-
-global inputOnly := 1000 ; Only stop input when keyboard typing was detected x amount of milliseconds before
+global inputOnly := 0 ; Only stop input when keyboard typing was detected x amount of milliseconds before
 global preventInput := 1000 ; Number of milliseconds in which we should prevent input in newly created windows
 
 if(FileExist(name . ".ini")) {
@@ -102,7 +99,7 @@ showTip(title, text) {
 }
 
 fileLog(text) {
-    if(logToFile ) {
+    if(logToFile) {
         FormatTime, CurrentDateTime,, yy-MM-dd HH:mm:ss
         FileAppend , `n[%CurrentDateTime%] %text%, %name%.log
     }
@@ -118,13 +115,3 @@ stopInput() {
             return false
     return (inputOnly > 0 && A_TimeIdlePhysical > inputOnly) || lastNewWindow + preventInput > A_TickCount
 }
-
-$Enter::
-    if(stopInput())
-        return
-    SendInput {Enter}
-
-$Esc::
-    if(stopInput())
-        return
-    SendInput {Esc}
